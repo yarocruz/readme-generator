@@ -1,0 +1,19 @@
+{
+  "name": "readme-generator",
+  "version": "1.0.0",
+  "description": "Automates the process of creating a README file.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yarocruz/readme-generator.git"
+  },
+  "author": "jaycruz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yarocruz/readme-generator/issues"
+  },
+  "homepage": "https://github.com/yarocruz/readme-generator#readme"
+}

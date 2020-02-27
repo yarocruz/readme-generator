@@ -1,5 +1,8 @@
-let fs = require('fs');
-let inquirer = require('inquirer');
+const fs = require('fs');
+const inquirer = require('inquirer');
+const axios = require('axios');
+
+const generateMarkdown = require('./utils/generateMarkdown');
 
 inquirer.prompt([
     {
@@ -57,12 +60,16 @@ inquirer.prompt([
     },
 
 ]).then(answers => {
-    let content = `# ${answers.title} \n## ${answers.description}\n## ${answers.tableOfContents}\n## ${answers.installation}\n## ${answers.usage}\n## ${answers.license}\n## ${answers.contributing}\n## ${answers.tests}\n## ${answers.github} `
-    fs.writeFile('README-test.md',
-        content,
-        function (err) {
+    axios.get(`https://api.github.com/users/${answers.github}`).then(function (res) {
+        console.log(res.data.avatar_url)
+
+        let content = generateMarkdown(answers);
+
+        fs.writeFile('README-test.md', content, err => {
             if (err) {
                 return console.log(err);
             }
         })
+    })
+
 })

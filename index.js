@@ -1,10 +1,14 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
-const axios = require('axios');
+const util = require('util');
+const axios = require('axios')
 
 const generateMarkdown = require('./utils/generateMarkdown');
+//const api = require('./utils/api');
 
-inquirer.prompt([
+const writeFileAsync = util.promisify(fs.writeFile);
+
+const questions = [
     {
         type: 'input',
         message: 'Title',
@@ -54,22 +58,55 @@ inquirer.prompt([
     },
     {
         type: 'input',
-        message: 'What is your Github users Name',
+        message: 'What is your Github user Name',
         name: 'github',
         default: 'username'
     },
+]
 
-]).then(answers => {
-    axios.get(`https://api.github.com/users/${answers.github}`).then(function (res) {
-        console.log(res.data.avatar_url)
-
-        let content = generateMarkdown(answers);
-
-        fs.writeFile('README-test.md', content, err => {
-            if (err) {
-                return console.log(err);
-            }
-        })
+function writeToFile(fileName, data) {
+    writeFileAsync(fileName, data).then(function () {
+        console.log('Successfully wrote file');
     })
+        .catch(err => {
+            console.log(err);
+        })
+}
 
-})
+function init() {
+    inquirer.prompt(questions)
+        .then(response => {
+
+            const queryURL = `https://api.github.com/users/${response.github}`;
+            axios.get(queryURL)
+                .then(res => {
+                    const data = {
+                        username: response.username,
+                        title: response.title,
+                        description: response.description,
+                        tableOfContents: response.tableOfContents,
+                        installation: response.installation,
+                        usage: response.usage,
+                        tests: response.tests,
+                        license: response.license,
+                        contributing: response.contributing,
+
+                        name: res.data.login,
+                        email: "yarocruz@gmail.com",
+                        profilePic: res.data.avatar_url,
+                    }
+                    const readmeContent = generateMarkdown(data);
+                    writeToFile('README-test.md', readmeContent);
+                })
+                .catch(err => {
+                    if (err) throw Error;
+                })
+
+
+        })
+        .catch(err => {
+            console.log(err);
+        })
+}
+
+init();

@@ -1,29 +1,39 @@
 function generateMarkdown(data) {
+
   return `
-  # ${data.title}
+# ${data.title} ![Version](https://img.shields.io/github/package-json/v/yarocruz/readme-generator)
 
-  ## ${data.description}
+## Description
 
-  This is a description of the project. 
+${data.description} 
 
-  ```
-  JSON.stringify()
-    ```
+## ${data.tableOfContents} 
 
-  ## ${data.tableOfContents} 
-  
-  ## ${data.installation}
+* [Installation](#installation)
+* [Usage](#usage)
+* [Tests](#tests)
+* [Deployment](#deployment)
+* [Contributing](#contribute)
+* [License](#license)
 
-  ## ${data.usage}
+## ${data.installation}
 
-  ## ${data.license} 
+## ${data.usage}
 
-  ## ${data.contributing}
+## License
 
-  ## ${data.tests}
+${data.license} 
 
-  ## Questions?
-  ![alt text](${data.avatar_url})
+## ${data.contributing}
+
+## ${data.tests}
+
+## Questions?
+![alt text](${data.profilePic})
+
+${data.name}
+
+Have any questions? Want to collaborate on a project? Shoot me an [email](${data.email})
   `;
 }
 

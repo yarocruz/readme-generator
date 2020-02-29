@@ -4,40 +4,49 @@ const util = require('util');
 const axios = require('axios')
 
 const generateMarkdown = require('./utils/generateMarkdown');
-//const api = require('./utils/api');
 
 const writeFileAsync = util.promisify(fs.writeFile);
 
 const questions = [
     {
         type: 'input',
-        message: 'Title',
+        message: 'What is your Github username?',
+        name: 'github',
+        default: 'username'
+    },
+    {
+        type: 'input',
+        message: 'What is the name of the project?',
         name: 'title',
         default: 'Title'
     },
     {
         type: 'input',
-        message: 'Description',
+        message: 'Add a description for your project',
         name: 'description',
         default: 'Description'
     },
     {
         type: 'input',
-        message: 'Table of Contents',
-        name: 'tableOfContents',
-        default: 'Table of Contents'
-    },
-    {
-        type: 'input',
-        message: 'Installation',
+        message: 'What command to run to install dependencies',
         name: 'installation',
         default: 'Installation'
     },
     {
         type: 'input',
-        message: 'Usage',
+        message: 'What command to run to for testing',
+        name: 'tests',
+    },
+    {
+        type: 'input',
+        message: 'What does the user need to know to use this repo',
         name: 'usage',
         default: 'Usage'
+    },
+    {
+        type: 'input',
+        message: 'How can the user contribute',
+        name: 'contributing',
     },
     {
         type: 'input',
@@ -45,28 +54,12 @@ const questions = [
         name: 'license',
         default: 'MIT'
     },
-    {
-        type: 'input',
-        message: 'Contributing',
-        name: 'contributing',
-        default: 'anonymous'
-    },
-    {
-        type: 'confirm',
-        message: 'Tests',
-        name: 'tests',
-    },
-    {
-        type: 'input',
-        message: 'What is your Github user Name',
-        name: 'github',
-        default: 'username'
-    },
+
 ]
 
 function writeToFile(fileName, data) {
     writeFileAsync(fileName, data).then(function () {
-        console.log('Successfully wrote file');
+        console.log('README file created.');
     })
         .catch(err => {
             console.log(err);

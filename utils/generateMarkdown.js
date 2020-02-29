@@ -7,31 +7,46 @@ function generateMarkdown(data) {
 
 ${data.description} 
 
-## ${data.tableOfContents} 
+## Table of Contents
 
 * [Installation](#installation)
 * [Usage](#usage)
 * [Tests](#tests)
-* [Deployment](#deployment)
-* [Contributing](#contribute)
 * [License](#license)
+* [Contributing](#contributing)
+* [Questions?](#questions)
 
-## ${data.installation}
+## Installation
 
-## ${data.usage}
+To install project dependencies run:
+
+\`\`\`
+${data.installation}
+\`\`\`
+
+## Tests
+
+To run tests run:
+
+\`\`\`
+${data.tests}
+\`\`\`
+
+## Usage
+
+${data.usage}
 
 ## License
 
 ${data.license} 
 
-## ${data.contributing}
+## Contributing
 
-## ${data.tests}
+${data.contributing}
 
 ## Questions?
-![alt text](${data.profilePic})
 
-${data.name}
+<img src="${data.profilePic}" alt="avatar-picture" style="border-radius: 50px" width="100px" />
 
 Have any questions? Want to collaborate on a project? Shoot me an [email](${data.email})
   `;

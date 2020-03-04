@@ -66,7 +66,7 @@ Feel free to clone or fork this repo.
 
 ## Contributing
 
-I you want to contribute to this project you can submit a pull request as well.
+If you want to contribute to this project you can submit a pull request as well.
 
 ## Questions?
 

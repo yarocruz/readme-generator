@@ -5,7 +5,7 @@
 
 ## Description
 
-This is a command-line application that dynamically generates a README.md file from a user's input. This is Node.js based application and it's run with the following command:
+This is a command-line application that dynamically generates a README.md file from a user's input. This is a Node.js based application and it's run with the following command:
 
 ```
 node index.js
@@ -46,7 +46,7 @@ To install project dependencies run:
 npm i
 ```
 
-This project the uses [axios]() and [inquirer]() package. 
+This project the uses [axios](https://www.npmjs.com/package/axios) and [inquirer](https://www.npmjs.com/package/inquirer) package. 
 
 ## Tests
 

@@ -1,6 +1,8 @@
 
 # Readme Generator ![Version](https://img.shields.io/github/package-json/v/yarocruz/readme-generator)
 
+![Readme Generator Sample](readme-generator.gif)
+
 ## Description
 
 This is a command-line application that dynamically generates a README.md file from a user's input. This is Node.js based application and it's run with the following command:
